@@ -2,64 +2,64 @@
 
 // Array of all the questions and choices to populate the questions.
 var all_questions = [{
-    question_string: "In retaliation for the 1599 Acoma Revolt, Governor Juan de Oñate ordered",
+    question_string: "Question 1",
     choices: {
-        correct: "the mutilation of all Acoma men over the age of twenty-five.",
-        wrong: ["the complete destruction of Acoma Pueblo, including its buildings and people.", "the imprisonment of a few key leaders of the revolt.", "that no actions be taken for fear of further infuriating Pueblo peoples."]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }, {
-    question_string: "During the final push for New Mexico's statehood, officials in the U.S. Senate proposed a measure called jointure that would have",
+    question_string: "Question 2",
     choices: {
-        correct: "combined New Mexico and Arizona into one large state called 'Montezuma.'",
-        wrong: ["created a joint state out of New Mexico, Arizona, and Oklahoma territories.", "divided New Mexico into two smaller states.", "prevented New Mexico's statehood for another decade."]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }, {
-    question_string: "Hispano residents of New Mexico territory began to refer to themselves as 'Spanish Americans' in the late nineteenth century in order to",
+    question_string: "Question 3",
     choices: {
-        correct: "emphasize their white, Spanish ancestry and disassociate themselves with Mexican or indigenous heritage to appear more acceptable for statehood.",
-        wrong: ["qualify for land grants offered under the Homestead Act of 1862.", "prevent the continued influx of Anglo Americans from the Eastern United States.", "reestablish ties with the Spanish government that had once ruled the area."]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }, {
-    question_string: "In the early 1940s, directors of the Manhattan Project chose to locate their top-secret nuclear weapons program to ________, New Mexico due to its remote location and prior experience in the area.",
+    question_string: "Question 4",
     choices: {
-        correct: "Los Alamos",
-        wrong: ["Albuquerque", "Ruidoso", "Alamogordo"]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }, {
-    question_string: "__________ and __________ were two of the centers of Ancestral Puebloan (formerly Anasazi) culture during the period between 700 and 1200 CE.",
+    question_string: "Question 5",
     choices: {
-        correct: "Chaco Canyon; Mesa Verde",
-        wrong: ["Casas Grandes; Pecos Pueblo", "Third Mesa; Chaco Canyon", "Ohkay Owingeh; Kewa"]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }, {
-    question_string: "Following the U.S.-Mexico War, the process of surveying the new border between the United States and Mexico was complicated because",
+    question_string: "Question 6",
     choices: {
-        correct: "the Disturnell Map used by negotiators of the Treaty of Guadalupe Hidalgo was inaccurate and in 1849 the Rio Grande changed its course.",
-        wrong: ["border commissioners routinely became ill in the desert heat and were unable to complete their assignments.", "the Treaty of Guadalupe Hidalgo was never ratified.", "armed bandits and nomadic natives prevented the boundary commission from completing its task."]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }, {
-    question_string: "The Santa Fe Ring was",
+    question_string: "Question 7",
     choices: {
-        correct: "a thinly veiled political machine directed by Thomas B. Catron.",
-        wrong: ["a criminal network comprised of petty thieves and bandits near Santa Fe.", "a social club for former politicians.", "a guild of Santa Fe jewelers."]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }, {
-    question_string: "The Navajo Long Walk was planned by ___________ and orchestrated by _________.",
+    question_string: "Question 8",
     choices: {
-        correct: "James Henry Carleton; Christopher 'Kit' Carson",
-        wrong: ["Juan de Oñate; Antonio de Zaldivar", "Sheriff Pat Garrett; Billy the Kid", "Governor Clyde Tingley; Senator Dennis Chávez"]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }, {
-    question_string: "The Spanish-colonial 'casta' system was a means of",
+    question_string: "Question 9",
     choices: {
-        correct: "identifying everyone in society based on their degree of limpieza de sangre, or the purity of their blood.",
-        wrong: ["casting blame against those who had committed a crime.", "defining the various branches of the colonial government.", "differentiating between people who worked for governors, the Church, and encomenderos."]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }, {
-    question_string: "The name 'New Mexico' (Nuevo México) originated with the earliest Spanish explorers of the region, including members of the Coronado expedition, because they hoped to find",
+    question_string: "Question 10",
     choices: {
-        correct: "gold and riches comparable to those of the great Aztec Empire, the first Mexico.",
-        wrong: ["thousands of hostile indigenous peoples whom they would have to subjugate.", "another great city like Tenochtitlan that had been constructed on a lake.", "small, sedentary societies that could be integrated into the Spanish Empire."]
+        correct: "correct answer.",
+        wrong: ["incorrect answer.", "incorrect answer.", "incorrect answer."]
     }
 }];
 
@@ -252,7 +252,7 @@ Question.prototype.render = function (container) {
 // "Main method" which will create all the objects and render the Quiz.
 $(document).ready(function () {
     // Create an instance of the Quiz object
-    var quiz = new Quiz('Red or Green? New Mexico History Quiz #1');
+    var quiz = new Quiz('Quizzly');
 
     // Create Question objects from all_questions and add them to the Quiz object
     for (var i = 0; i < all_questions.length; i++) {
