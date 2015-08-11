@@ -34,7 +34,7 @@ body {
   font-weight: 600;
   font-size: 28px;
   text-align: center;
-  line-height: 44px;
+  line-height: 70px;
 }
 
 #quiz button {
@@ -111,11 +111,11 @@ body {
   -ms-flex-pack: center;
   justify-content: center;
   position: absolute;
-  top: 44px;
+  top: 75px;
   left: 0px;
   background: #fafafa;
   width: 100%;
-  height: calc(100% - 44px);
+  height: calc(100% - 80px);
 }
 
 #quiz-results-message {
