@@ -66,15 +66,17 @@ var all_questions = [{
 
 // An object for a Quiz, which will contain Question objects.
 var Quiz = function(quiz_name) {
+ 
   // Private fields for an instance of a Quiz object.
   this.quiz_name = quiz_name;
-
+  
   // This one will contain an array of Question objects in the order that the questions will be presented.
   this.questions = [];
 }
 
 // A function that you can enact on an instance of a quiz object. This function is called add_question() and takes in a Question object which it will add to the questions field.
 Quiz.prototype.add_question = function(question) {
+  
   // Randomly choose where to add question
   var index_to_add_question = Math.floor(Math.random() * this.questions.length);
   this.questions.splice(index_to_add_question, 0, question);
@@ -82,24 +84,25 @@ Quiz.prototype.add_question = function(question) {
 
 // A function that you can enact on an instance of a quiz object. This function is called render() and takes in a variable called the container, which is the <div> that I will render the quiz in.
 Quiz.prototype.render = function(container) {
+  
   // For when we're out of scope
   var self = this;
-
+  
   // Hide the quiz results modal
   $('#quiz-results').hide();
-
+  
   // Write the name of the quiz
   $('#quiz-name').text(this.quiz_name);
-
+  
   // Create a container for questions
   var question_container = $('<div>').attr('id', 'question').insertAfter('#quiz-name');
-
+  
   // Helper function for changing the question and updating the buttons
   function change_question() {
     self.questions[current_question_index].render(question_container);
-    $('#prev-question-button').prop('disabled', current_question_index === self.questions.length - 1);
+    $('#prev-question-button').prop('disabled', current_question_index === 0);
     $('#next-question-button').prop('disabled', current_question_index === self.questions.length - 1);
-
+    
     // Determine if all questions have been answered
     var all_questions_answered = true;
     for (var i = 0; i < self.questions.length; i++) {
@@ -110,11 +113,11 @@ Quiz.prototype.render = function(container) {
     }
     $('#submit-button').prop('disabled', !all_questions_answered);
   }
-
+  
   // Render the first question
   var current_question_index = 0;
   change_question();
-
+  
   // Add listener for the previous question button
   $('#prev-question-button').click(function() {
     if (current_question_index > 0) {
@@ -122,7 +125,7 @@ Quiz.prototype.render = function(container) {
       change_question();
     }
   });
-
+  
   // Add listener for the next question button
   $('#next-question-button').click(function() {
     if (current_question_index < self.questions.length - 1) {
@@ -130,9 +133,20 @@ Quiz.prototype.render = function(container) {
       change_question();
     }
   });
-
+  
+  // Add listener for the clear answer button
+  $('#clear-button').click(function() {
+    $('input[name=choices]:checked').removeAttr('checked'); // Reset radio label
+  });
+  
+  // Add listener for the try again button
+  $('#retry-button').click(function() {
+    $('#quiz-results').hide(); // Hide quiz results from last attempt
+  });
+                           
   // Add listener for the submit answers button
   $('#submit-button').click(function() {
+    
     // Determine how many questions the user got right
     var score = 0;
     for (var i = 0; i < self.questions.length; i++) {
@@ -140,7 +154,7 @@ Quiz.prototype.render = function(container) {
         score++;
       }
     }
-
+    
     // Display the score with the appropriate message
     var percentage = score / self.questions.length;
     console.log(percentage);
@@ -170,7 +184,7 @@ Quiz.prototype.render = function(container) {
     $('#submit-button').prop('disabled', !all_questions_answered);
   });
 }
-
+                               
 // An object for a Question, which contains the question, the correct choice, and wrong choices. This block is the constructor.
 var Question = function(question_string, correct_choice, wrong_choices) {
   // Private fields for an instance of a Question object.
@@ -187,6 +201,7 @@ var Question = function(question_string, correct_choice, wrong_choices) {
     if (i === this.correct_choice_index) {
       this.choices[i] = correct_choice;
     } else {
+      
       // Randomly pick a wrong choice to put in this index
       var wrong_choice_index = Math.floor(Math.random(0, wrong_choices.length));
       this.choices[i] = wrong_choices[wrong_choice_index];
@@ -220,6 +235,7 @@ Question.prototype.render = function(container) {
     });
   }
   for (var i = 0; i < this.choices.length; i++) {
+    
     // Create the radio button
     var choice_radio_button = $('<input>')
       .attr('id', 'choices-' + i)
@@ -239,22 +255,25 @@ Question.prototype.render = function(container) {
   // Add a listener for the radio button to change which one the user has clicked on
   $('input[name=choices]').change(function(index) {
     var selected_radio_button_value = $('input[name=choices]:checked').val();
-
+    
     // Change the user choice index
     self.user_choice_index = parseInt(selected_radio_button_value.substr(selected_radio_button_value.length - 1, 1));
 
     // Trigger a user-select-change
     container.trigger('user-select-change');
+    
   });
 }
 
 // "Main method" which will create all the objects and render the Quiz.
 $(document).ready(function() {
+  
   // Create an instance of the Quiz object
   var quiz = new Quiz('Quizzly');
 
   // Create Question objects from all_questions and add them to the Quiz object
   for (var i = 0; i < all_questions.length; i++) {
+    
     // Create a new Question object
     var question = new Question(all_questions[i].question_string, all_questions[i].choices.correct, all_questions[i].choices.wrong);
 
